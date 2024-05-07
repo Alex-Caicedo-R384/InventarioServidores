@@ -84,7 +84,13 @@
 
                             <div class="form-group">
                                 <label asp-for="Inversion" class="control-label"></label>
-                                <input asp-for="Inversion" class="form-control" placeholder="Ingresa la Inversion" />
+                                <div class="input-group">
+                                    <!-- Div para agregar el signo de dólar -->
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">$</span> <!-- Signo de dólar -->
+                                    </div>
+                                    <input type="text" asp-for="Inversion" class="form-control" placeholder="Ingresa la Inversion" onkeypress="return soloNumeros(event)" />
+                                </div>
                                 <span asp-validation-for="Inversion" class="text-danger"></span>
                             </div>
                             <!------------------------------------------------------------------------------------------------------------------------------>
@@ -165,6 +171,14 @@
                 $(this).hide();
             });
         });
+
+        function soloNumeros(event) {
+            var charCode = (event.which) ? event.which : event.keyCode;
+            if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+                return false;
+            }
+            return true;
+        }
         //-------------------------------------------------------------------------------------------------------//        
     </script>
 }

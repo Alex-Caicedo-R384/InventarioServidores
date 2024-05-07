@@ -193,7 +193,7 @@
                                                 </button>
                                                 <div class="dropdown-menu" aria-labelledby="accionesDropdown_@item.Id">
                                                     <a class="dropdown-item m-1" href="@Url.Action("Editar", "Inicio", new { id = item.Id })" style="background-color: #ffc107; color: #212529;">Editar</a>
-                                                    <a class="dropdown-item m-1" href="@Url.Action("DetalleServidor", "Inicio", new { id = item.Id })" style="background-color: #17202A; color: #FFFFFF;">Detalles</a>
+                                                    <a class="dropdown-item m-1" href="@Url.Action("DetalleServidores", "Inicio", new { id = item.Id })" style="background-color: #17202A; color: #FFFFFF;">Detalles</a>
                                                     <a class="dropdown-item m-1" href="@Url.Action("Borrar", "Inicio", new { id = item.Id })" style="background-color: #D41B1B; color: #FFFFFF;">Borrar</a>
                                                 </div>
                                             </div>
@@ -240,4 +240,12 @@
             });
         });
     </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('.dropdown-toggle').dropdown();
+        });
+    </script>
+
 }

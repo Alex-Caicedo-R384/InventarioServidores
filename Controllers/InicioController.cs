@@ -148,9 +148,9 @@ namespace InventarioServidores.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var zonas = ObtenerZonas();
+            var servidores = await _contexto.Servidores.ToListAsync();
 
-            return View(await _contexto.Servidores.ToListAsync());
+            return View(servidores);
         }
 
 
@@ -219,9 +219,6 @@ namespace InventarioServidores.Controllers
             ViewBag.fuentespoder = ObtenerFuentesPoder();
             ViewBag.procesadores = ObtenerProcesadores();
 
-
-
-
             if (Id == null)
             {
                 return NotFound();
@@ -260,10 +257,6 @@ namespace InventarioServidores.Controllers
             ViewBag.fuentespoder = ObtenerFuentesPoder();
             ViewBag.procesadores = ObtenerProcesadores();
 
-
-
-
-
             if (ModelState.IsValid)
             {
                 foreach (var prop in typeof(Servidores).GetProperties())
@@ -300,19 +293,21 @@ namespace InventarioServidores.Controllers
 
                 _contexto.Servidores.Update(servidorExistente);
                 await _contexto.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+
             }
             return View(servidores);
         }
 
         [HttpGet]
-        public IActionResult Detalles(int? Id)
+        public async Task<IActionResult> DetalleServidores(int? Id)
         {
             if (Id == null)
             {
                 return NotFound();
             }
 
-            var servidores = _contexto.Servidores.FirstOrDefault(s => s.Id == Id);
+            var servidores = await _contexto.Servidores.FirstOrDefaultAsync(s => s.Id == Id);
 
             if (servidores == null)
             {
@@ -330,7 +325,7 @@ namespace InventarioServidores.Controllers
                 return NotFound();
             }
 
-            var servidores = _contexto.Servidores.FirstOrDefault(s => s.Id == Id);
+            var servidores = _contexto.Servidores.Find(Id);
 
             if (servidores == null)
             {
