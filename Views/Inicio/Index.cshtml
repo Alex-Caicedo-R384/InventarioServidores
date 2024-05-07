@@ -1,0 +1,243 @@
+﻿@model IEnumerable<InventarioServidores.Models.Servidores>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    body {
+        background-color: #d9d9d9;
+    }
+
+    .table {
+        background-color: #c3c3c3 !important; /* Cambiar Color del fondo de la tabla */
+    }
+
+        .table tbody {
+            color: transparent; /* Cambia aquí el color de texto deseado para el cuerpo de la tabla */
+        }
+
+        .table th,
+        .table td {
+            background-color: #828282; /* Cambiar el color del fondo de las celdas */
+            padding: 10px; /* Agregar margen interno a las celdas */
+        }
+
+        .table th {
+            background-color: #2f4f4f; /* Cambiar el color del fondo de los encabezados de columna */
+        }
+
+    .card-body {
+        background-color: #565656; /* Cambiar el color del fondo de los encabezados de columna */
+    }
+
+    tr {
+        background-color: #828282; /* Cambiar el color del fondo de las filas */
+    }
+
+    #tblServidores thead th {
+        color: #000; /* Cambia aquí el color de texto deseado para las cabeceras de columna */
+        font-weight: bold;
+    }
+
+    #tblServidores tbody td {
+        color: #fff; /* Cambia aquí el color de texto deseado para las celdas de datos */
+    }
+
+    /* Estilos para DataTables */
+    #tblServidores_wrapper .dataTables_info {
+        color: #ffffff; /* Cambia aquí el color de texto deseado para la información de tabla */
+    }
+
+    #tblServidores_wrapper .dataTables_paginate .paginate_button {
+        color: #ffffff; /* Cambia aquí el color de texto deseado para los botones de paginación */
+    }
+
+    #tblServidores_wrapper .dataTables_filter label {
+        color: #ffffff; /* Cambia aquí el color de texto deseado para la etiqueta de búsqueda */
+    }
+
+    #tblServidores_wrapper .dataTables_empty {
+        color: #ffffff; /* Cambia aquí el color de texto deseado para el mensaje cuando la tabla está vacía */
+    }
+
+    /* Color del texto de las opciones de paginación */
+    #tblServidores_wrapper .dataTables_length label {
+        color: #fff; /* Cambia aquí el color de texto deseado para las opciones de mostrar entradas */
+    }
+
+    .dataTables_length select {
+        background-color: #d9d9d9; /* Cambia el color de fondo del combobox */
+        color: #000; /* Cambia el color del texto dentro del combobox */
+        border: 1px solid #d9d9d9; /* Cambia el color del borde */
+        border-radius: 5px; /* Agrega un radio de borde */
+        padding: 3px; /* Ajusta el espacio interno */
+    }
+
+    /* Color del texto de la información de la tabla (mostrando X a Y de Z entradas) */
+    #tblServidores_wrapper .dataTables_info {
+        color: #fff; /* Cambia aquí el color de texto deseado para la información de la tabla */
+    }
+
+    /* Color del texto del campo de búsqueda */
+    #tblServidores_wrapper .dataTables_filter input[type="search"] {
+        color: #fff; /* Cambia aquí el color de texto deseado para el campo de búsqueda */
+    }
+    /* Color de fondo del campo de búsqueda */
+    #tblServidores_wrapper .dataTables_filter input[type="search"] {
+        background-color: #d9d9d9; /* Color de fondo */
+        border: 0.1px solid #d9d9d9; /* Borde sólido de 1px del mismo color que el fondo */
+        margin-bottom: 5px; /* Agrega espacio en la parte inferior del campo de búsqueda */
+        color: #000;
+    }
+
+    /* Estilo para cambiar el color del borde de las celdas del encabezado */
+    #tblServidores th {
+        border-width: 0.1px; /* Ancho del borde */
+        border-style: outset; /* Estilo del borde */
+        border-color: #546565; /* Color del borde para las celdas del encabezado */
+    }
+
+    /* Estilo para cambiar el color del borde de las celdas de datos */
+    #tblServidores td {
+        border-width: 0.1px; /* Ancho del borde */
+        border-style: inset; /* Estilo del borde */
+        border-color: #BEAFAF; /* Color del borde para las celdas de datos */
+    }
+
+    #tblServidores {
+        border: 1px solid #828282; /* Borde sólido de 1px */
+        border-radius: 5px; /* Esquinas redondeadas */
+        box-sizing: border-box;
+        width: 100%; /* Opcional: ajusta el ancho de la tabla */
+    }
+
+        #tblServidores th {
+            text-align: center; /* Alineación del texto en el centro */
+        }
+
+        #tblServidores tr:hover {
+            background-color: #eaeaea; /* Estilo de hover para resaltar las filas */
+        }
+
+
+    /* Estilos para el fondo del menú desplegable */
+    .dropdown-menu {
+        background-color: #828282; /* Cambia el color de fondo del menú desplegable */
+        border: 4px; /* Borde sólido */
+        border-color: #ced4da;
+        border-style: solid; /* Estilo del borde */
+        border-radius: 10px; /* Radio de borde */
+        padding: 6px 5px; /* Espaciado interno */
+        box-sizing: border-box; /* Incluye el borde en el tamaño total del elemento */
+    }
+
+        /* Estilos para los ítems del menú desplegable */
+        .dropdown-menu a.dropdown-item {
+            border: none; /* Quita el borde de los ítems */
+            color: #212529; /* Cambia el color del texto de los ítems */
+            text-decoration: none; /* Quitar subrayado */
+            display: block; /* Mostrar como bloque */
+            border-radius: 10px; /* Radio de borde */
+            padding: 5px 5px; /* Espaciado interno */
+        }
+
+        .dropdown-menu button.dropdown-item {
+            width: 100%; /* Ajusta el ancho de los botones al 100% */
+            margin: 5px 5px; /* Agrega margen superior e inferior */
+        }
+</style>
+
+<h1 class="text-center"></h1>
+<div class="row">
+    <div class="offset-9 col-3 mb-3">
+        <a asp-action="Crear" asp-controller="Inicio" class="btn d-block mx-auto btn-lg" style="background-color: #5F51F3; border-color: #5F51F3; color: #ffffff;">Nuevo Servidor</a>
+        </a>
+    </div>
+</div>
+
+<div class="row">
+    <div class="offset-12">
+        <div class="card border">
+            <div class="card-header bg-dark">
+                <h3 class="text-white"><strong> Lista de Servidores </strong></h3>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    @if (Model.Count() > 0)
+                    {
+                        <table class="table table-bordered" id="tblServidores" width="100%" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th>@Html.DisplayNameFor(m => m.Id)</th>
+                                    <th>@Html.DisplayNameFor(m => m.TipoEquipo)</th>
+                                    <th>@Html.DisplayNameFor(m => m.Funcion)</th>
+                                    <th>@Html.DisplayNameFor(m => m.DireccionIP)</th>
+                                    <th>@Html.DisplayNameFor(m => m.Ubicacion)</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>@Html.DisplayFor(m => item.Id)</td>
+                                        <td>@Html.DisplayFor(m => item.TipoEquipo)</td>
+                                        <td>@Html.DisplayFor(m => item.Funcion)</td>
+                                        <td>@Html.DisplayFor(m => item.DireccionIP)</td>
+                                        <td>@Html.DisplayFor(m => item.Ubicacion)</td>
+                                        <td>
+                                            <div class="dropdown">
+                                                <button class="btn btn-secondary dropdown-toggle" type="button" id="accionesDropdown_@item.Id" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #fa6607; color: #212529;">
+                                                    Acciones
+                                                </button>
+                                                <div class="dropdown-menu" aria-labelledby="accionesDropdown_@item.Id">
+                                                    <a class="dropdown-item m-1" href="@Url.Action("Editar", "Inicio", new { id = item.Id })" style="background-color: #ffc107; color: #212529;">Editar</a>
+                                                    <a class="dropdown-item m-1" href="@Url.Action("DetalleServidor", "Inicio", new { id = item.Id })" style="background-color: #17202A; color: #FFFFFF;">Detalles</a>
+                                                    <a class="dropdown-item m-1" href="@Url.Action("Borrar", "Inicio", new { id = item.Id })" style="background-color: #D41B1B; color: #FFFFFF;">Borrar</a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    }
+                    else
+                    {
+                        <p>No hay registros</p>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            $('#tblServidores').DataTable({
+                language: {
+                    "decimal": "",
+                    "emptyTable": "No hay información",
+                    "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
+                    "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
+                    "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+                    "infoPostFix": "",
+                    "thousands": ",",
+                    "lengthMenu": "Mostrar _MENU_ Entradas",
+                    "loadingRecords": "Cargando...",
+                    "processing": "Procesando...",
+                    "search": "Buscar:",
+                    "zeroRecords": "Sin resultados encontrados",
+                    "paginate": {
+                        "first": "Primero",
+                        "last": "Ultimo",
+                        "next": "Siguiente",
+                        "previous": "Anterior"
+                    }
+                }
+            });
+        });
+    </script>
+}

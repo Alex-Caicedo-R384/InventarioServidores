@@ -1,0 +1,114 @@
+﻿@model InventarioServidores.Models.Servidores
+@{
+    ViewData["Title"] = "Detalle  de Computador";
+}
+
+<style>
+    body {
+        background-color: #d9d9d9;
+    }
+
+    .card-body {
+        background-color: #565656; /* Cambiar el color del fondo la tablas */
+        color: #ffffff; /* Cambiar el color del texto dentro del card body */
+        font-weight: bold; /* Hacer que el texto dentro del cuerpo de la tarjeta sea negrita */
+    }
+
+    .list-group-item {
+        background-color: #333333; /* Cambiar el color de fondo de los elementos de la lista */
+    }
+
+    .list-group-item strong {
+            color: #5a5aad; /* Cambiar el color del texto de los nombres a rojo */
+    }
+
+    .custom-text-color {
+        color: #e6e1db; /* Cambia aquí el color de texto deseado para todos los elementos */
+    }
+
+</style>
+
+<div class="row">
+    <div class="offset-12">
+        <div class="card border">
+            <div class="card-header bg-dark">
+                <h3 class="text-white"><strong> Detalles </strong></h3>
+            </div>
+            <div class="card-body">
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="computadorTab" data-toggle="tab" href="#informacionBasica">Información Básica</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="softwareTab" data-toggle="tab" href="#licencias">Licencias</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="adquisicionTab" data-toggle="tab" href="#estado">Adquisicion</a>
+
+                        <li class="nav-item">
+                            <a class="nav-link" id="hardwareTab" data-toggle="tab" href="#hardware">Hardware</a>
+                        </li>
+                    </ul>
+
+                <div class="tab-content">
+                    <div class="tab-pane fade show active" id="informacionBasica">
+                        <!---------------------------------------Información Básica------------------------------------------- -->
+                        <div class="card-body">
+                            <ul class="list-group">
+                                <li class="list-group-item custom-text-color"><strong>Tipo de Equipo: </strong> @Html.DisplayFor(m => m.TipoEquipo)</li>
+                                <li class="list-group-item custom-text-color"><strong>Función: </strong> @Html.DisplayFor(m => m.Funcion)</li>
+                                <li class="list-group-item custom-text-color"><strong>Dirección IP: </strong> @Html.DisplayFor(m => m.DireccionIP)</li>
+                                <li class="list-group-item custom-text-color"><strong>Marca: </strong> @Html.DisplayFor(m => m.Marca)</li>
+                                <li class="list-group-item custom-text-color"><strong>Unicacion: </strong> @Html.DisplayFor(m => m.Ubicacion)</li>
+                            </ul>
+                        </div>
+                        <!------------------------------------------------------------------------------------------------------------------------------>
+                    </div>
+                    <div class="tab-pane fade" id="licencias">
+                        <!-------------------------------------------------Informacion de Software------------------------------------------------------>
+                        <div class="card-body">
+                           <li class="list-group-item custom-text-color"><strong>Tipo de Sistema Operativo: </strong> @Html.DisplayFor(m => m.SistemaOperativo)</li>
+                        </div>
+                        <!------------------------------------------------------------------------------------------------------------------------------>
+                    </div>
+                    <div class="tab-pane fade" id="estado">
+                        <!------------------------------------------------Informacion de adquisicion---------------------------------------------------->
+                        <div class="card-body">
+                            <ul class="list-group">
+                                <li class="list-group-item custom-text-color"><strong>Arrendado: </strong> @Html.DisplayFor(m => m.Arrendado)</li>
+                                <li class="list-group-item custom-text-color"><strong>Inversion: </strong> @Html.DisplayFor(m => m.Inversion)</li>
+                            </ul>
+                        </div>
+                        <!------------------------------------------------------------------------------------------------------------------------------>
+                    </div>
+                    <div class="tab-pane fade" id="hardware">
+                        <!------------------------------------------------HARDWARE---------------------------------------------------------------------->
+                        <div class="card-body">
+                            <ul class="list-group">
+                                <li class="list-group-item custom-text-color"><strong>Procesadores: </strong> @Html.DisplayFor(m => m.Procesadores)</li>
+                                <li class="list-group-item custom-text-color"><strong>Memoria: </strong> @Html.DisplayFor(m => m.Memoria)</li>
+                                <li class="list-group-item custom-text-color"><strong>Cantidad de Discos: </strong> @Html.DisplayFor(m => m.Discos)</li>
+                                <li class="list-group-item custom-text-color"><strong>Tamaño de Discos: </strong> @Html.DisplayFor(m => m.TamanoDiscos)</li>
+                                <li class="list-group-item custom-text-color"><strong>Modelo: </strong> @Html.DisplayFor(m => m.Modelo)</li>
+                                <li class="list-group-item custom-text-color"><strong>Fuentes de Poder: </strong> @Html.DisplayFor(m => m.FuentesPoder)</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <a asp-controller="Inicio" asp-action="Index" style="color: #fff;">Volver</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('#informacionBasicaTab').tab('show');
+
+            $('#computadorTab, #softwareTab, #adquisicionTab, #hardwareTab').on('click', function (e) {
+                e.preventDefault();
+                $(this).tab('show');
+            });
+        });
+    </script>
+}

@@ -1,0 +1,221 @@
+﻿@model InventarioServidores.Models.Servidores
+@{
+    ViewData["Title"] = "Editar Computador";
+}
+
+<h1>Computadoras</h1>
+<div class="row">
+    <div class="offset-12">
+        <div class="card border">
+            <div class="card-header bg-dark">
+                <h3 class="text-white"><strong>Editar Computador</strong></h3>
+            </div>
+            <div class="card-body">
+                <form id="formularioEditar" asp-action="Editar">
+
+                    <input type="hidden" asp-for="Id" />
+
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="informacionBasicaTab" data-toggle="tab" href="#informacionBasica">Información Básica</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="licenciasTab" data-toggle="tab" href="#licencias">Licencias</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="estadoTab" data-toggle="tab" href="#estado">Estado</a>
+
+                        <li class="nav-item">
+                            <a class="nav-link" id="hardwareTab" data-toggle="tab" href="#hardware">Hardware</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" id="almacenamientoTab" data-toggle="tab" href="#almacenamiento">Almacenamiento</a>
+                        </li>
+                    </ul>
+
+                    <div class="tab-content">
+                        <div class="tab-pane fade show active" id="informacionBasica">
+                            <!---------------------------------------Información Básica------------------------------------------- -->
+                            <div class="form-group">
+                                <label asp-for="TipoEquipo" class="control-label"></label>
+                                <input asp-for="TipoEquipo" class="form-control" placeholder="Ingresa el Tipo de Equipo" />
+                                <span asp-validation-for="TipoEquipo" class="text-danger"></span>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label asp-for="Funcion" class="control-label"></label>
+                                <input asp-for="Funcion" class="form-control" placeholder="Ingresa la Función" />
+                                <span asp-validation-for="Funcion" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="DireccionIP" class="control-label"></label>
+                                <input asp-for="DireccionIP" class="form-control" placeholder="Ingresa la Dirección IP" />
+                                <span asp-validation-for="DireccionIP" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="Marca" class="control-label"></label>
+                                <input asp-for="Marca" class="form-control" placeholder="Ingresa la Marca" />
+                                <span asp-validation-for="Marca" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="Ubicacion" class="control-label"></label>
+                                <select asp-for="Ubicacion" asp-items="ViewBag.Zonas" class="form-control"></select>
+                                <span asp-validation-for="Ubicacion" class="text-danger"></span>
+                            </div>
+                            <!------------------------------------------------------------------------------------------------------------------------------>
+                            <!-------------------------------------------------Informacion de Software------------------------------------------------------>
+                            <div class="form-group" id="sistemaOperativoDiv" style="display:none;">
+                                <label asp-for="SistemaOperativo" class="control-label"></label>
+                                <select asp-for="SistemaOperativo" asp-items="ViewBag.sistemaoperativo" class="form-control"></select>
+                                <span asp-validation-for="SistemaOperativo" class="text-danger"></span>
+                            </div>
+                            <!------------------------------------------------------------------------------------------------------------------------------>
+                        </div>
+                        <div class="tab-pane fade" id="estado">
+                            <!------------------------------------------------Informacion de adquisicion---------------------------------------------------->
+                            <div class="form-group">
+                                <label asp-for="Arrendado" class="control-label"></label>
+                                <select asp-for="Arrendado" asp-items="ViewBag.arrendado" class="form-control"></select>
+                                <span asp-validation-for="Arrendado" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="Inversion" class="control-label"></label>
+                                <input asp-for="Inversion" class="form-control" placeholder="Ingresa la Inversion" />
+                                <span asp-validation-for="Inversion" class="text-danger"></span>
+                            </div>
+                            <!------------------------------------------------------------------------------------------------------------------------------>
+
+                        </div>
+                        <div class="tab-pane fade" id="hardware">
+                            <!------------------------------------------------HARDWARE---------------------------------------------------------------------->
+                            <div class="form-group">
+                                <label asp-for="Procesadores" class="control-label"></label>
+                                <select asp-for="Procesadores" asp-items="ViewBag.procesadores" class="form-control"></select>
+                                <span asp-validation-for="Procesadores" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="Memoria" class="control-label"></label>
+                                <select asp-for="Memoria" asp-items="ViewBag.memoriaram" class="form-control"></select>
+                                <span asp-validation-for="Memoria" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="Discos" class="control-label"></label>
+                                <select asp-for="Discos" asp-items="ViewBag.cantidaddiscos" class="form-control"></select>
+                                <span asp-validation-for="Discos" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="TamanoDiscos" class="control-label"></label>
+                                <select asp-for="TamanoDiscos" asp-items="ViewBag.capacidadalmacenamiento" class="form-control"></select>
+                                <span asp-validation-for="TamanoDiscos" class="text-danger"></span>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label asp-for="Modelo" class="control-label"></label>
+                                <input asp-for="Modelo" class="form-control" placeholder="Ingresa el Modelo" />
+                                <span asp-validation-for="Modelo" class="text-danger"></span>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label asp-for="FuentesPoder" class="control-label"></label>
+                                <select asp-for="FuentesPoder" asp-items="ViewBag.fuentespoder" class="form-control"></select>
+                                <span asp-validation-for="FuentesPoder" class="text-danger"></span>
+                            </div>
+
+                            <!------------------------------------------------------------------------------------------------------------------------------>
+                            <!----------------------------------------------Botón--------------------------------------------------------------------------->
+                            <div class="form-group mt-3">
+                                <button id="btnEditar" type="submit" class="btn btn-secondary d-block mx-auto" style="background-color: #ffc107; border-color: #ffc107; color: #212529;">Editar  Computador</button>
+                            </div>
+                            <!------------------------------------------------------------------------------------------------------------------------------>
+                        </div>
+                    </div>
+                </form>
+                <a asp-controller="Inicio" asp-action="Index" style="color: #fff;">Volver</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        //-----------------------------------PESTAÑA-------------------------------------------------------------//
+        $(document).ready(function () {
+            $('#informacionBasicaTab').tab('show');
+
+            $('#informacionBasicaTab, #licenciasTab, #estadoTab, #hardwareTab, #almacenamientoTab').on('click', function (e) {
+                e.preventDefault();
+                $(this).tab('show');
+            });
+        });
+    </script>
+}
+
+<style>
+    body {
+        background-color: #d9d9d9;
+        -webkit-text-size-adjust: 100% !important; /* For Safari, Safari on iOS */
+        text-size-adjust: 100% !important; /* For Firefox for Android */
+    }
+
+    .form-control::placeholder {
+        color: #7f7a75;
+    }
+
+    .card-body {
+        background-color: #333333; /* Cambiar el color del fondo la tablas */
+        color: #5a5aad; /* Cambiar el color del texto dentro del card body */
+        font-weight: bold; /* Hacer que el texto dentro del cuerpo de la tarjeta sea negrita */
+    }
+
+    .form-control {
+        background-color: #565656; /* Cambiar el color de fondo de los campos de texto */
+        color: #ffffff; /* Cambiar el color del texto dentro de los campos de texto */
+        border: 0px solid #ffffff; /* Añadir borde a los campos de texto */
+    }
+
+        .form-control:disabled {
+            background-color: #565656; /* Cambiar el color de fondo de los campos de texto deshabilitados */
+            color: #fff; /* Cambiar el color del texto dentro de los campos de texto deshabilitados */
+        }
+
+        .form-control:focus {
+            background-color: #565656; /* Cambiar el color de fondo de los campos de texto deshabilitados */
+            border: 0px solid #ffffff; /* Añadir borde a los campos de texto */
+            outline: 0; /* Eliminar contorno al enfocar */
+            box-shadow: #fff; /* Sombra al enfocar */
+        }
+
+    select.form-control {
+        background-color: #808080; /* Cambiar el color de fondo del combo box */
+        color: #ffffff !important; /* Cambiar el color del texto dentro del combo box */
+    }
+
+    .form-control:focus {
+        color: #ffffff; /* Cambiar el color del texto cuando el campo de texto está enfocado */
+    }
+
+    .contenedor-botones {
+        margin-top: 20px; /* Márgen superior */
+        margin-bottom: 10px; /* Márgen inferior */
+    }
+
+    #botonesAlmacenamiento button {
+        margin-right: 10px; /* Espacio entre los botones */
+    }
+
+    .contenedor-boton {
+        margin-top: 20px; /* Márgen superior */
+        margin-bottom: 10px; /* Márgen inferior */
+    }
+</style>

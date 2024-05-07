@@ -1,0 +1,96 @@
+﻿@model InventarioServidores.Models.Servidores
+@{
+    ViewData["Title"] = "Borrar Servidor";
+}
+
+<style>
+    body {
+        background-color: #d9d9d9;
+    }
+
+    .card-body {
+        background-color: #565656; /* Cambiar el color del fondo la tablas */
+        color: #1985a1; /* Cambiar el color del texto dentro del card body */
+        font-weight: bold; /* Hacer que el texto dentro del cuerpo de la tarjeta sea negrita */
+    }
+
+    .form-control {
+        background-color: #333333; /* Cambiar el color de fondo de los campos de texto */
+        color: #ffffff; /* Cambiar el color del texto dentro de los campos de texto */
+        border: 0px solid #ffffff; /* Añadir borde a los campos de texto */
+    }
+
+        .form-control:disabled {
+            background-color: #777777; /* Cambiar el color de fondo de los campos de texto deshabilitados */
+            color: #ffffffff; /* Cambiar el color del texto dentro de los campos de texto deshabilitados */
+        }
+
+        .form-control:focus {
+            background-color: #333333; /* Cambiar el color de fondo de los campos de texto deshabilitados */
+            border: 0px solid #ffffff; /* Añadir borde a los campos de texto */
+            outline: 0; /* Eliminar contorno al enfocar */
+            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Sombra al enfocar */
+        }
+
+    select.form-control {
+        background-color: #333333; /* Cambiar el color de fondo del combo box */
+        color: #ffffff !important; /* Cambiar el color del texto dentro del combo box */
+    }
+
+    .form-control:focus {
+        color: #ffffff; /* Cambiar el color del texto cuando el campo de texto está enfocado */
+    }
+
+    .form-control:read-only{
+        background-color: #777777; /* Cambiar el color de fondo de los campos de texto deshabilitados */
+        color: #ffffffff; /* Cambiar el color del texto dentro de los campos de texto deshabilitados */
+    }
+
+</style>
+
+<h1>Servidores </h1>
+<div class="row">
+    <div class="offset-12">
+        <div class="card border">
+            <div class="card-header bg-dark">
+                <h3 class="text-white"><strong> Borrar Servidor </strong></h3>
+            </div>
+            <div class="card-body">
+                <form asp-action="Borrar">
+
+                    <input type="hidden" asp-for="DireccionIP" />
+
+                    <div class="form-group">
+                        <label asp-for="TipoEquipo" class="control-label"></label>
+                        <input asp-for="TipoEquipo" class="form-control" readonly />
+                        <span asp-validation-for="TipoEquipo" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Funcion" class="control-label"></label>
+                        <input asp-for="Funcion" class="form-control" readonly />
+                        <span asp-validation-for="Funcion" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Ubicacion" class="control-label"></label>
+                        <input asp-for="Ubicacion" class="form-control" readonly />
+                        <span asp-validation-for="Ubicacion" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="DireccionIP" class="control-label"></label>
+                        <input asp-for="DireccionIP" class="form-control" readonly />
+                        <span asp-validation-for="DireccionIP" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group mt-3">
+                        <button id="btnBorrar" type="submit" class="btn btn-secondary d-block mx-auto" style="background-color: #D41B1B; border-color: #D41B1B; color: #ffffff;">Borrar Computador</button>
+                    </div>
+
+                </form>
+                <a asp-controller="Inicio" asp-action="Index" style="color: #fff;">Volver</a>
+            </div>
+        </div>
+    </div>
+</div>
