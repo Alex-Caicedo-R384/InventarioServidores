@@ -67,7 +67,7 @@ namespace InventarioServidores.Models
 
 
         [Display(Name = "Valor Inversion")]
-        public string? Inversion { get; set; }
+        public decimal? Inversion { get; set; }
 
     }
 }

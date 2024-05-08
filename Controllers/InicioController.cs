@@ -16,6 +16,7 @@ namespace InventarioServidores.Controllers
             return new List<SelectListItem>
         {
             new SelectListItem { Value = "", Text = "Seleccionar" },
+            new SelectListItem { Value = "Matriz", Text = "Matriz" },
             new SelectListItem { Value = "Tulcán", Text = "Tulcán" },
             new SelectListItem { Value = "Multiplaza", Text = "Multiplaza" },
             new SelectListItem { Value = "Amazonas", Text = "Amazonas" },
@@ -24,8 +25,15 @@ namespace InventarioServidores.Controllers
             new SelectListItem { Value = "San Gabriel", Text = "San Gabriel" },
             new SelectListItem { Value = "Bolívar", Text = "Bolívar" },
             new SelectListItem { Value = "Quito", Text = "Quito" },
+            new SelectListItem { Value = "Quito Centro", Text = "Quito Centro" },
             new SelectListItem { Value = "Ibarra", Text = "Ibarra" },
-            new SelectListItem { Value = "Nuevo Lago", Text = "Nuevo Lago" },
+            new SelectListItem { Value = "Ibarra Pedro Moncayo", Text = "Ibarra Pedro Moncayo" },
+            new SelectListItem { Value = "Ibarra Amazonas", Text = "Ibarra Amazonas" },
+            new SelectListItem { Value = "Ibarra Mayorista", Text = "Ibarra Mayorista" },
+            new SelectListItem { Value = "Otavalo", Text = "Otavalo" },
+            new SelectListItem { Value = "Cayambe", Text = "Cayambe" },
+            new SelectListItem { Value = "Lago Agrio", Text = "Lago Agrio" },
+            new SelectListItem { Value = "Guamani", Text = "Guamani" },
             new SelectListItem { Value = "Mira", Text = "Mira" }
         };
         }
@@ -51,8 +59,8 @@ namespace InventarioServidores.Controllers
             new SelectListItem { Value = "16 GB", Text = "16 GB" },
             new SelectListItem { Value = "32 GB", Text = "32 GB" },
             new SelectListItem { Value = "82 GB", Text = "82 GB" },
-            new SelectListItem { Value = "128 GB", Text = "128 GB" },
-            new SelectListItem { Value = "64 GB", Text = "64 GB" }
+            new SelectListItem { Value = "64 GB", Text = "64 GB" },
+            new SelectListItem { Value = "128 GB", Text = "128 GB" }
         };
         }
 
@@ -111,7 +119,9 @@ namespace InventarioServidores.Controllers
             new SelectListItem { Value = "8", Text = "8" },
             new SelectListItem { Value = "9", Text = "9" },
             new SelectListItem { Value = "10", Text = "10" },
-            new SelectListItem { Value = "11", Text = "11" }
+            new SelectListItem { Value = "11", Text = "11" },
+            new SelectListItem { Value = "12", Text = "12" },
+            new SelectListItem { Value = "13", Text = "13" }
         };
         }
 
@@ -131,15 +141,27 @@ namespace InventarioServidores.Controllers
         private List<SelectListItem> ObtenerProcesadores()
         {
             return new List<SelectListItem>
-        {
-            new SelectListItem { Value = "", Text = "Seleccionar" },
-            new SelectListItem { Value = "1", Text = "1" },
-            new SelectListItem { Value = "2", Text = "2" },
-            new SelectListItem { Value = "3", Text = "3" },
-            new SelectListItem { Value = "4", Text = "4" }
-
-        };
+    {
+        new SelectListItem { Value = "", Text = "Seleccionar" },
+        new SelectListItem { Value = "1", Text = "1" },
+        new SelectListItem { Value = "2", Text = "2" },
+        new SelectListItem { Value = "3", Text = "3" },
+        new SelectListItem { Value = "4", Text = "4" },
+        new SelectListItem { Value = "5", Text = "5" },
+        new SelectListItem { Value = "6", Text = "6" },
+        new SelectListItem { Value = "7", Text = "7" },
+        new SelectListItem { Value = "8", Text = "8" },
+        new SelectListItem { Value = "9", Text = "9" },
+        new SelectListItem { Value = "10", Text = "10" },
+        new SelectListItem { Value = "11", Text = "11" },
+        new SelectListItem { Value = "12", Text = "12" },
+        new SelectListItem { Value = "13", Text = "13" },
+        new SelectListItem { Value = "14", Text = "14" },
+        new SelectListItem { Value = "15", Text = "15" },
+        new SelectListItem { Value = "16", Text = "16" }
+    };
         }
+
 
         public InicioController(AppDBContext contexto)
         {
